@@ -1,4 +1,9 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.net.URL;
+
 import Parser.ParsePage;
+import RSSReader.RSSReader;
 
 
 public class Main {
@@ -13,8 +18,15 @@ public class Main {
 		Main m = new Main();
 	}
 	Main(){
-		
-		
+		RSSReader rss;
+		String site = "CNN";
+		try {
+			rss = new RSSReader("http://rss.cnn.com/rss/cnn_topstories.rss", site);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 		
 		
 		String Link = null;

@@ -8,32 +8,30 @@ import RSSReader.RSSReader;
 
 public class Main {
 
+	private ParsePage page;
 	/**
 	 * @param args
 	 * 
 	 * Using jSoup
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		Main m = new Main();
 	}
 	Main(){
 		RSSReader rss;
 		String site = "CNN";
-		try {
-			rss = new RSSReader("http://rss.cnn.com/rss/cnn_topstories.rss", site);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		rss = new RSSReader();
+		rss.RSSReader("http://rss.cnn.com/rss/cnn_topstories.rss");
+		int rssSize = rss.getLinks().size();
+		for(int i=2; i<rssSize; i++){
+			rss.getALink(i);
+			System.out.println(rss.getALink(i));
+			page = new ParsePage(site, rss.getALink(i));
 		}
-
 		
-		
-		String Link = null;
-		String Site = null;
 		
 		//focus on CNN first
-		ParsePage page = new ParsePage(Site,Link);
+		//page = new ParsePage(site,Link);
 		
 		//entry for every p tag, arraylist for each page
 		

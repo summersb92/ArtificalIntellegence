@@ -2,6 +2,11 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
+<<<<<<< HEAD
+=======
+	<classpathentry kind="lib" path="/home/summersb/workspace/AINLP/assets/jsoup-1.7.3.jar"/>
+	<classpathentry kind="lib" path="/home/summersb/workspace/AINLP/assets/jsoup-1.7.3-javadoc.jar"/>
+>>>>>>> 65c79d4b5453d892961e7cfb48d8249fa5f13b9e
 	<classpathentry kind="lib" path="assets/jsoup-1.7.3-javadoc.jar"/>
 	<classpathentry kind="lib" path="assets/jsoup-1.7.3.jar"/>
 	<classpathentry kind="output" path="bin"/>

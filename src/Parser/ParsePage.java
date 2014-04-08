@@ -1,8 +1,10 @@
 package Parser;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.io.*;
 import java.net.*;
+
 import org.jsoup.*;
 import org.jsoup.helper.*;
 import org.jsoup.nodes.*;
@@ -23,14 +25,46 @@ public class ParsePage {
 		ArrayList<String> pList = new ArrayList<String>();
 
 		//use jsoup to get all <p> of a doc and put them in the list
-		Document doc = Jsoup.parse(getHTML(link)); //this should receive a webpage
-		Element p= doc.select("p").first(); //this should grab all p tagged items from the page
-		String text = p.text(); //this would be added to the array list
-		pList.add(text); // adds the text to the array list
+		//Document doc = Jsoup.parse(getHTML(link)); //this should receive a webpage
+		//Element p= doc.select("p").first(); //this should grab all p tagged items from the page
+		//String text = p.text(); //this would be added to the array list
+		//pList.add(text); // adds the text to the array list
 		
+		//Element content = doc.getElementById("someid");
+		Document document = null;
+		try {
+			document = Jsoup.connect(link).get();
+		} catch (SocketTimeoutException ste) {
+			System.out.println("I timed out!");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Elements elements = document.select("p");
+		List<String> currentArticle = null;
+		System.out.println(elements.size());
+		for(int i=0; i < elements.size(); i++){
+			currentArticle.add(elements.get(i).text());
+			System.out.println(elements.get(i).text());
+		}
+		
+//		System.out.println(elements.toArray());
+//		System.out.println(elements.toArray().toString());
+	   // System.out.println(elements.text());
+//		Document doc = Jsoup.parse(link);
+//		Elements elements = doc.getElementsByClass("cnn_storypgraphtxt");
+//		String instructor = elements.first().text();
+//		System.out.println(instructor);
+//		Elements p= doc.getElementsByTag("p");
+//		String pConcatenated="";
+//		for (Element x: p) {
+//		  pConcatenated+= x.text();
+//		}
+
+//		System.out.println(pConcatenated);
 		//debug
 		//System.out.print("Site: "+site+"\n");
-		System.out.print("Site: " + site + "\n" + "paragraphs" + pList.toString());
+	//	System.out.print("Site: " + site + "\n" + "paragraphs" + pList.toString());
 		//might have to loop through and add tags separately 
 	}
 	/**************************************************************************************************
